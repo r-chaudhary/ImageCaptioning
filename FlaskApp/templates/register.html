@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block content %} 
+    <form method="POST" action="" class="mx-auto bg-light p-3 border border-5 border-secondary rounded-3 user-form"  novalidate>
+        {{ form.hidden_tag() }}
+        
+        <p class="text-center fs-1" >REGISTRATION</p>
+
+        <div>
+            <div class="mb-3">
+                {{ form.username.label(class=" form-label") }}
+                {% if form.username.errors  %}
+                    {{ form.username(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for errors in form.username.errors %}
+                            <span>{{ errors }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control") }}
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.fullname.label(class="form-label") }} 
+                {% if form.fullname.errors  %}
+                    {{ form.fullname(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for errors in form.fullname.errors %}
+                            <span>{{ errors }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.fullname(class="form-control") }}
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.email.label(class="form-label") }} 
+                {% if form.email.errors  %}
+                    {{ form.email(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for errors in form.email.errors %}
+                            <span>{{ errors }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control") }}
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }} 
+                {% if form.password.errors  %}
+                    {{ form.password(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for errors in form.password.errors %}
+                            <span>{{ errors }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control") }}
+                    <div class="form-text">
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.confirm_password.label(class="form-label") }} 
+                {% if form.confirm_password.errors  %}
+                    {{ form.confirm_password(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for errors in form.confirm_password.errors %}
+                            <span>{{ errors }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password(class="form-control") }}
+                {% endif %}
+            </div>
+
+            <div class="ms-3">
+                {{ form.submit(class="btn btn-lg btn-secondary pe-5 ps-5") }}
+            </div>
+        </div>
+
+        <div class="border-top mt-3 pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+            </small>
+        </div>        
+    </form>
+{% endblock %}

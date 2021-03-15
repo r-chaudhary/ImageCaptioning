@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %} 
+    <form method="POST" action="" class="mx-auto bg-light p-3 border border-5 border-secondary rounded-3 user-form" novalidate>
+        {{ form.hidden_tag() }}
+            
+        <p class="text-center fs-1">LOGIN</p>
+        
+        <div>
+            <div class="mb-3">
+                {{ form.username.label(class="form-label") }}
+                {% if form.username.errors  %}
+                    {{ form.username(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for errors in form.username.errors %}
+                            <span>{{ errors }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control") }}
+                        
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }} 
+                {% if form.password.errors  %}
+                    {{ form.password(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for errors in form.password.errors %}
+                        <span>{{ errors }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control") }}
+                {% endif %}
+            </div>
+
+            <div class="ms-3">
+                {{ form.submit(class="btn btn-lg btn-secondary pe-5 ps-5") }}
+            </div>
+        </div>
+
+        <div class="border-top mt-3 pt-3">
+            <small class="text-muted">
+                Don't Have An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up</a>
+            </small>
+        </div>
+
+    </form>
+
+{% endblock %}

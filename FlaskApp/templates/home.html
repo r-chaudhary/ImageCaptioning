@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %} 
+
+    <div class="mx-auto pt-4">
+        {{ dropzone.create('home') }}
+
+        <button class="btn btn-lg btn-dark mt-3 ps-5 pe-5" id="upload">Upload</button>
+
+        {{ dropzone.load_js() }}
+        {{ dropzone.config() }}
+
+    </div>    
+    
+{% endblock %}
